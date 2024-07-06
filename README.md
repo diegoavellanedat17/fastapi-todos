@@ -1,9 +1,24 @@
-# FastAPI Hello World
+# FastAPI To Do
 
-This is a simple FastAPI application that returns "Hello, World!".
+Esta corresponde al BE de una aplicación simple de gestión de tareas, registro y autenticación de usuarios
 
-## Installation
+## Instalación
 
-```sh
-pip install -r requirements.txt
-```
+### Prerequisitos
+
+Asegurate que tengas docker instalado en la maquina de destino .[Web oficial de docker](https://www.docker.com/products/docker-desktop).
+
+### Coonfiguración
+
+1. **Clone the repository**:
+
+   ```sh
+   git clone https://github.com/yourusername/fastapi-hello-world.git
+   cd fastapi-to-dos
+
+   ```
+
+2. **Docker Build and Run**:
+   docker build -t fastapi-to-dos .
+
+   docker run -p 8000:8000 fastapi-to-dos
