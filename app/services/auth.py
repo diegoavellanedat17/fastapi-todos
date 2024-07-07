@@ -3,8 +3,8 @@ from jose import JWTError, jwt
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
-from . import crud, models
-from .dependencies import get_db
+from app.services import user_service
+from ..dependencies import get_db
 import os
 from dotenv import load_dotenv
 
@@ -36,7 +36,7 @@ def get_current_user(db: Session = Depends(get_db), token: str = Depends(oauth2_
             raise credentials_exception
     except JWTError:
         raise credentials_exception
-    user = crud.get_user_by_email(db, email=email)
+    user = user_service.get_user_by_email(db, email=email)
     if user is None:
         raise credentials_exception
     return user
