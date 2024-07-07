@@ -19,6 +19,16 @@ Asegurate que tengas docker instalado en la maquina de destino .[Web oficial de 
    ```
 
 2. **Docker Build and Run**:
+
+   ```sh
    docker build -t fastapi-to-dos .
 
    docker run -p 8000:8000 fastapi-to-dos
+   ```
+
+3. **Access the DB of the dockerContainer**
+   ```sh
+   docker ps
+   docker exec -it <container-id> /bin/bash
+   sqlite3 todos.db
+   ```
