@@ -18,7 +18,16 @@ Asegurate que tengas docker instalado en la maquina de destino .[Web oficial de 
 
    ```
 
-2. **Docker Build and Run**:
+2. **Generate the SecretKey for the JWT**:
+
+   ```sh
+   openssl rand -base64 32
+   ```
+
+   Create a file .env in the root of the folder and save as:
+   SECRET_KEY=26kVSvW6+njzlj5SUPxXmHYiqAVsD/kFQn9soumBxsk=
+
+3. **Docker Build and Run**:
 
    ```sh
    docker build -t fastapi-to-dos .
@@ -26,7 +35,7 @@ Asegurate que tengas docker instalado en la maquina de destino .[Web oficial de 
    docker run -p 8000:8000 fastapi-to-dos
    ```
 
-3. **Access the DB of the dockerContainer**
+4. **Access the DB of the dockerContainer**
    ```sh
    docker ps
    docker exec -it <container-id> /bin/bash
