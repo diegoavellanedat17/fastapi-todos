@@ -1,0 +1,241 @@
+{
+  "info": {
+    "_postman_id": "ce4f5172-2c56-40ea-8dde-4e04d7190154",
+    "name": "Fast API TO DOs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "6988585"
+  },
+  "item": [
+    {
+      "name": "registerUser",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"username\": \"fernando\",\n    \"email\": \"fernando@example.com\",\n    \"password\": \"1234\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/users/register",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["users", "register"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"username\": \"fernandoo\",\n    \"email\": \"fernando@example.com\",\n    \"password\": \"1234\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/users/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["users", "login"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GetUser",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWVnb0BleGFtcGxlLmNvbSIsImV4cCI6MTcyMDM5ODA0OX0.PeH9aYWo258a46Ojcbn_RMZ9z1VpTxhHTxCRMpsyE2Q",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/users/me",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["users", "me"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8000/health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["health"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Tasks",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmZXJuYW5kb0BleGFtcGxlLmNvbSIsImV4cCI6MTcyMDM5ODg0N30.pQE9lI-_fjAktefhhYh75_CuNr5LIhdOmfgQZ2YUPUw",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/tasks",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["tasks"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Task",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWVnb0BleGFtcGxlLmNvbSIsImV4cCI6MTcyMDM5ODA0OX0.PeH9aYWo258a46Ojcbn_RMZ9z1VpTxhHTxCRMpsyE2Q",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"title\": \"tarea diego\"\n    \n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/tasks/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["tasks", ""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Task By Id",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWVnb0BleGFtcGxlLmNvbSIsImV4cCI6MTcyMDM5Njc0OX0.zhxe5Xhlbs_4SfIPLT8wPnViF8nYm70WPh8BhWEP27o",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/tasks/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["tasks", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update By Id",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWVnb0BleGFtcGxlLmNvbSIsImV4cCI6MTcyMDM5Njc0OX0.zhxe5Xhlbs_4SfIPLT8wPnViF8nYm70WPh8BhWEP27o",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"title\":\"testing in db\",\n    \"completed\": true\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/tasks/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["tasks", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete By Id",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWVnb0BleGFtcGxlLmNvbSIsImV4cCI6MTcyMDM5Njc0OX0.zhxe5Xhlbs_4SfIPLT8wPnViF8nYm70WPh8BhWEP27o",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/tasks/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["tasks", "1"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
