@@ -49,5 +49,5 @@ jobs:
           sudo docker rm fastapi-to-dos || true
 
           # Run new Docker container
-          sudo docker run -d -p 3000:3000 --name fastapi-to-dos --restart unless-stopped fastapi-to-dos
+          docker run -p 8000:8000 fastapi-to-dos --restart unless-stopped fastapi-to-dos
           EOF
