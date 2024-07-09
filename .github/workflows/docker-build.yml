@@ -42,11 +42,17 @@ jobs:
           # Build Docker image
           sudo docker build -t fastapi-to-dos .
 
-          # Stop previous Docker container (if running)
-          sudo docker stop fastapi-to-dos || true
+          CONTAINER_ID=$(sudo docker ps -aqf "name=fastapi-to-dos")
+          if [ -n "$CONTAINER_ID" ]; then
+            sudo docker stop $CONTAINER_ID
+            sudo docker rm $CONTAINER_ID
+          fi
 
-          # Remove previous Docker container (if exists)
-          sudo docker rm fastapi-to-dos || true
+
+          PORT_IN_USE=$(sudo lsof -t -i:8000)
+          if [ -n "$PORT_IN_USE" ]; then
+            sudo kill -9 $PORT_IN_USE
+          fi
 
           # Run new Docker container
           sudo docker run -p 8000:8000 fastapi-to-dos --restart unless-stopped fastapi-to-dos
