@@ -49,9 +49,23 @@ jobs:
             sudo docker rm $CONTAINER_ID
           fi
 
+          # Free up port 8000 if it's already in use
           PORT_IN_USE=$(sudo lsof -t -i:8000)
           if [ -n "$PORT_IN_USE" ]; then
+            echo "Port 8000 is in use by PID $PORT_IN_USE, killing it."
             sudo kill -9 $PORT_IN_USE
+          else
+            echo "Port 8000 is not in use."
+          fi
+
+          # Verify port 8000 is freed
+          sleep 2
+          PORT_IN_USE_AFTER=$(sudo lsof -t -i:8000)
+          if [ -n "$PORT_IN_USE_AFTER" ]; then
+            echo "Port 8000 is still in use by PID $PORT_IN_USE_AFTER, exiting."
+            exit 1
+          else
+            echo "Port 8000 is free."
           fi
 
           # Run new Docker container
