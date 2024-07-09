@@ -42,11 +42,9 @@ jobs:
           # Build Docker image
           sudo docker build -t fastapi-to-dos .
 
-          # Stop previous Docker container (if running)
-          sudo docker stop fastapi-to-dos || true
-
-          # Remove previous Docker container (if exists)
-          sudo docker rm fastapi-to-dos || true
+          # Stop and remove all Docker containers
+          sudo docker stop $(sudo docker ps -aq) || true
+          sudo docker rm $(sudo docker ps -aq) || true
 
           # Run new Docker container
           sudo docker run -p 8000:8000 fastapi-to-dos
