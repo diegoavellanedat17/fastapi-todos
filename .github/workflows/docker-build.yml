@@ -42,12 +42,12 @@ jobs:
           # Build Docker image
           sudo docker build -t fastapi-to-dos .
 
+          # Stop and remove previous Docker container (if running)
           CONTAINER_ID=$(sudo docker ps -aqf "name=fastapi-to-dos")
           if [ -n "$CONTAINER_ID" ]; then
             sudo docker stop $CONTAINER_ID
             sudo docker rm $CONTAINER_ID
           fi
-
 
           PORT_IN_USE=$(sudo lsof -t -i:8000)
           if [ -n "$PORT_IN_USE" ]; then
@@ -55,5 +55,5 @@ jobs:
           fi
 
           # Run new Docker container
-          sudo docker run -p 8000:8000 fastapi-to-dos --restart unless-stopped fastapi-to-dos
+          sudo docker run -d -p 8000:8000 --name fastapi-to-dos --restart unless-stopped fastapi-to-dos
           EOF
