@@ -69,5 +69,5 @@ jobs:
           fi
 
           # Run new Docker container
-          sudo docker run -d -p 8000:8000 --name fastapi-to-dos --restart unless-stopped fastapi-to-dos
+          sudo docker run -p 8000:8000 fastapi-to-dos
           EOF
