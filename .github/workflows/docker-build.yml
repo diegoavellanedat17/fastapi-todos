@@ -42,31 +42,11 @@ jobs:
           # Build Docker image
           sudo docker build -t fastapi-to-dos .
 
-          # Stop and remove previous Docker container (if running)
-          CONTAINER_ID=$(sudo docker ps -aqf "name=fastapi-to-dos")
-          if [ -n "$CONTAINER_ID" ]; then
-            sudo docker stop $CONTAINER_ID
-            sudo docker rm $CONTAINER_ID
-          fi
+          # Stop previous Docker container (if running)
+          sudo docker stop fastapi-to-dos || true
 
-          # Free up port 8000 if it's already in use
-          PORT_IN_USE=$(sudo lsof -t -i:8000)
-          if [ -n "$PORT_IN_USE" ]; then
-            echo "Port 8000 is in use by PID $PORT_IN_USE, killing it."
-            sudo kill -9 $PORT_IN_USE
-          else
-            echo "Port 8000 is not in use."
-          fi
-
-          # Verify port 8000 is freed
-          sleep 2
-          PORT_IN_USE_AFTER=$(sudo lsof -t -i:8000)
-          if [ -n "$PORT_IN_USE_AFTER" ]; then
-            echo "Port 8000 is still in use by PID $PORT_IN_USE_AFTER, exiting."
-            exit 1
-          else
-            echo "Port 8000 is free."
-          fi
+          # Remove previous Docker container (if exists)
+          sudo docker rm fastapi-to-dos || true
 
           # Run new Docker container
           sudo docker run -p 8000:8000 fastapi-to-dos
