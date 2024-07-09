@@ -32,7 +32,7 @@ Asegurate que tengas docker instalado en la maquina de destino .[Web oficial de 
    ```sh
    docker build -t fastapi-to-dos .
 
-   docker run -p 8000:8000 fastapi-to-dos
+   docker run -d -p 8000:8000 fastapi-to-dos
    ```
 
 4. **Access the DB of the dockerContainer**
