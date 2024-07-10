@@ -23,7 +23,11 @@ def create_user(db: Session, user: UserCreate):
         email=user.email, 
         hashed_password=get_password_hash(user.password)
     )
-    db.add(db_user)
-    db.commit()
-    db.refresh(db_user)
-    return db_user
+    try:
+        db.add(db_user)
+        db.commit()
+        db.refresh(db_user)
+        return db_user
+    except Exception as e:
+        db.rollback()
+        raise e
